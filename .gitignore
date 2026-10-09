@@ -1,0 +1,24 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local agent state and credentials
+.claude/settings.local.json
+.cursor/mcp.json
+.agents/sessions/
+
+# Obsidian local workspace/cache (if a vault is placed in this repo)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
