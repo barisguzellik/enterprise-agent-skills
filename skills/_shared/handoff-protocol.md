@@ -45,13 +45,14 @@ Not: `bug-finder` ana zincirin yanında çağrılabilir; bulgular genelde engine
 - Obsidian vault: <kök path>
 - Obsidian oturum dizini: <session path>
 - Obsidian not: <bu skill’in yazdığı md path>
+- Obsidian artefaktları: <arşivlenen Markdown raporlarının path’leri; yoksa "yok">
 - Sonraki skill için giriş: <somut, uygulanabilir talimat; oturum path’ini de ilet>
 ```
 
 ## Kurallar
 
 - Dil: talimatlar ve handoff **Türkçe**.
-- Artefaktları kopyalama: plan, diff, test raporu, ADR zaten dosyadaysa **path/URL** ver; gövdeyi tekrar etme.
+- Artefakt gövdelerini handoff’a yapıştırma; path/URL ile belirt. Nihai Markdown raporlarını Obsidian oturumundaki `artifacts/` klasörüne arşivle ve hem asıl dosya path’ini hem Obsidian kopya path’ini yaz. Kod, büyük dosyalar, ham veri ve kaynak belgelerini kopyalama. Arşivleme ayrıntıları için [obsidian-session.md](obsidian-session.md) uygula.
 - Secret, parola, ham PII, kart verisi handoff’ta **redact**.
 - Durum `engellendi` ise sonraki skill’e geçilmez; engel ve gereken karar yazılır. Obsidian’a yine de durum notu yazılabilir.
 - Durum `kısmi` ise tamamlanan / kalan iş ayrılır.

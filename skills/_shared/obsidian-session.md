@@ -30,15 +30,30 @@ $OBSIDIAN_VAULT_PATH/memory/sessions/YYYY-MM-DD-<kisa-slug>/
 - `<kisa-slug>`: görev/özetten 2–5 kelimelik ASCII/kebab (örn. `odeme-api-refactor`)
 - İlk notta `index.md` oluştur; her skill sonrası index’e wikilink satırı ekle
 
+## Oturum artefaktlarını arşivleme
+
+Oturum sırasında proje dizininde üretilen nihai, anlamlı Markdown raporlarını (ör. plan, mimari inceleme, test/güvenlik raporu, release veya deployment planı) Obsidian oturumunda `artifacts/` altına arşivle:
+
+```text
+<oturum-dizini>/artifacts/<dosya-adı>.md
+```
+
+- Proje dizinindeki dosya asıl kaynaktır; Obsidian kopyası oturum kaydı için snapshot’tır. Her iki yolu da handoff ve oturum indeksinde belirt.
+- Yalnızca oturumda üretilen veya anlamlı biçimde güncellenen nihai Markdown raporlarını kopyala. Kod, büyük dosyalar, ham veri ve kaynak belgeleri kopyalama; kaynak path’lerini kaydet.
+- Aynı dosya zaten vault içindeyse ikinci kopya oluşturma; mevcut path’e bağlantı ver.
+- Arşivlemeden önce secret, parola, token, anahtar, ham PII ve erişimi kısıtlı içeriği çıkar veya redact et. Güvenli biçimde temizlenemiyorsa dosyayı arşivleme; yalnızca path ve kısa, temizlenmiş özet kaydet.
+- `index.md` içinde arşivlenen her raporu göreli Markdown bağlantısıyla listele.
+
 ## Her skill sonunda (zorunlu, otomatik)
 
 Handoff bloğu taslaklandıktan hemen sonra, yanıtın sonunda sunulmadan önce:
 
 1. Oturum dizinini handoff’tan veya (başlatıcıysa) yeni oluşturarak belirle.
-2. `NN-<skill-name>.md` yaz (`NN` = oturumdaki sıradaki numara: 01, 02, …).
-3. Not içeriği: skill’in Türkçe çıktı özeti + Handoff bloğu (secret/PII redact).
-4. `index.md` güncelle: `- [[NN-skill-name]] — kısa özet`
-5. Handoff taslağına Obsidian alanlarını doldur (aşağıdaki şablon); kayıt tamamlandıktan sonra bu handoff’u yanıtın sonunda sun.
+2. Bu skill’in ürettiği nihai Markdown raporlarını yukarıdaki arşivleme kurallarına göre `artifacts/` altına kopyala; kaynak ve arşiv yollarını handoff’a ekle. Arşivlenecek rapor yoksa `Obsidian artefaktları: yok` yaz.
+3. `NN-<skill-name>.md` yaz (`NN` = oturumdaki sıradaki numara: 01, 02, …).
+4. Not içeriği: skill’in Türkçe çıktı özeti + güncel Handoff bloğu (secret/PII redact) + ilgili artefakt yolları.
+5. `index.md` güncelle: skill notuna wikilink ve arşivlenen her rapora göreli Markdown bağlantısı ekle.
+6. Handoff taslağına Obsidian alanlarını doldur (aşağıdaki şablon); kayıt tamamlandıktan sonra bu handoff’u yanıtın sonunda sun.
 
 `obsidian-memory-manager` skill’ini bu otomatik adım için **çağırma** (özyineleme / gereksiz orkestrasyon yok). Protokolü doğrudan uygula.
 
@@ -70,6 +85,7 @@ session: <oturum-klasör-adı>
 - Obsidian vault: <kök path veya OBSIDIAN_VAULT_PATH>
 - Obsidian oturum dizini: <tam path>
 - Obsidian not: <yazılan NN-skill.md path>
+- Obsidian artefaktları: <arşivlenen dosya path’leri; yoksa "yok">
 ```
 
 ## Manuel kullanım
